@@ -9,5 +9,11 @@
 <body>
     <h2>Sobre mim</h2>
     <hr>
+    {% for aluno, nota in notas.items() %}
+    <details>
+        <summary>{{aluno}}</summary>
+        <p>{{nota}}</p>
+    </details>
+    {% endfor %}
 </body>
 </html>

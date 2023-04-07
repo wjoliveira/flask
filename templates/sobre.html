@@ -4,16 +4,23 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sobre</title>
+    <title>Diário do Professor</title>
 </head>
 <body>
-    <h2>Sobre mim</h2>
+    <h2 style="text-align: center;">Diário do Professor</h2>
     <hr>
-    {% for aluno, nota in notas.items() %}
+    {% for registro in registros %}
     <details>
-        <summary>{{aluno}}</summary>
-        <p>{{nota}}</p>
+        <summary>{{registro.aluno}}</summary>
+        <p>{{registro.nota}}</p>
     </details>
     {% endfor %}
+    <form action="{{url_for('sobre')}}" method="post">
+        <label for="aluno">Aluno</label>
+        <input type="text" name="aluno" required>
+        <label for="nota">Nota</label>
+        <input type="text" name="nota" required>
+        <button>Adicionar</button>
+    </form>
 </body>
 </html>

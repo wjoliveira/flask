@@ -9,10 +9,14 @@
 </details>
 {% endfor %}
 <form action="/sobre" method="post">
-    <label for="aluno">Aluno</label>
-    <input type="text" name="aluno" required>
-    <label for="nota">Nota</label>
-    <input type="text" name="nota" required>
-    <button>Adicionar</button>
+    <div class="mb-3">
+        <label for="exemploInputAluno" class="form-label">Aluno</label>
+        <input type="text" name="aluno" class="form-control" id="exemploInputAluno" placeholder="Digite o nome de um aluno" required>
+    </div>
+    <div class="mb-3">
+        <label for="exemploInputNota" class="form-label">Nota</label>
+        <input type="text" name="nota" class="form-control" id="exemploInputNota" placeholder="Digite a nota de um aluno" required>
+    </div>
+    <button type="submit" class="btn btn-success">Adicionar</button>
 </form>
 {% endblock conteudo %}

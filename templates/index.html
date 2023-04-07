@@ -2,14 +2,17 @@
 {% block conteudo %}
 <h2 style="text-align: center;">Lista de Frutas</h2>
 <hr>
-<ol>
+<ul class="list-group">
     {% for fruta in frutas %}
-    <li>{{fruta}}</li>
+    <li class="list-group-item">{{fruta}}</li>
     {% endfor %}
-    <form action="/index" method="post">
-        <label for="fruta">Fruta</label>
-        <input type="text" name="fruta" required>
-        <button>Adicionar</button>
-    </form>
-</ol>
+</ul>
+<form action="/index" method="post">
+    <div class="mb-3">
+        <label for="exemploInputFruta" class="form-label">Fruta</label>
+        <input type="text" name="fruta" class="form-control" id="exemploInputFruta" placeholder="Digite uma fruta"  required>
+    </div>
+    <button type="submit" class="btn btn-success">Adicionar</button>
+</form>
+
 {% endblock conteudo %}

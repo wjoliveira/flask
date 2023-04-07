@@ -1,26 +1,18 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Diário do Professor</title>
-</head>
-<body>
-    <h2 style="text-align: center;">Diário do Professor</h2>
-    <hr>
-    {% for registro in registros %}
-    <details>
-        <summary>{{registro.aluno}}</summary>
-        <p>{{registro.nota}}</p>
-    </details>
-    {% endfor %}
-    <form action="{{url_for('sobre')}}" method="post">
-        <label for="aluno">Aluno</label>
-        <input type="text" name="aluno" required>
-        <label for="nota">Nota</label>
-        <input type="text" name="nota" required>
-        <button>Adicionar</button>
-    </form>
-</body>
-</html>
+{% extends "base.html" %}
+{% block conteudo %}
+<h2 style="text-align: center;">Diário do Professor</h2>
+<hr>
+{% for registro in registros %}
+<details>
+    <summary>{{registro.aluno}}</summary>
+   <p>{{registro.nota}}</p>
+</details>
+{% endfor %}
+<form action="{{url_for('sobre')}}" method="post">
+    <label for="aluno">Aluno</label>
+    <input type="text" name="aluno" required>
+    <label for="nota">Nota</label>
+    <input type="text" name="nota" required>
+    <button>Adicionar</button>
+</form>
+{% endblock conteudo %}

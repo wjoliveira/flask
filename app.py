@@ -15,7 +15,6 @@ def index():
 
 @app.route('/sobre', methods=["GET", "POST"])
 def sobre():
-    # alunos = {"Aluno0":5.0, "Aluno1":8.0, "Aluno2":7.0, "Aluno3":8.5}
     if request.method == "POST":
         if request.form.get("aluno") and request.form.get("nota"):
             registros.append({"aluno": request.form.get("aluno"), "nota": request.form.get("nota")})

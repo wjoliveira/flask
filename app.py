@@ -6,8 +6,8 @@ frutas = []
 registros = []
 
 @app.route('/', methods=["GET", "POST"])
+@app.route('/index', methods=["GET", "POST"])
 def index():
-    # frutas = ["Morango", "Uva", "Laranja", "Mamão", "Maçã", "Pêra", "Melão", "Abacaxi"]
     if request.method == "POST":
         if request.form.get("fruta"):
             frutas.append(request.form.get("fruta"))

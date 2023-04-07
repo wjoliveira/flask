@@ -6,7 +6,7 @@
     {% for fruta in frutas %}
     <li>{{fruta}}</li>
     {% endfor %}
-    <form action="{{url_for('index')}}" method="post">
+    <form action="/index" method="post">
         <label for="fruta">Fruta</label>
         <input type="text" name="fruta" required>
         <button>Adicionar</button>

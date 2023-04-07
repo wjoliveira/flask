@@ -5,12 +5,8 @@ app = Flask(__name__)
 @app.route('/')
 
 def index():
-    fruta1 = "Morango"
-    fruta2 = "Uva"
-    fruta3 = "Maçã"
-    fruta4 = "Laranja"
-
-    return render_template("index.html", fruta1=fruta1, fruta2=fruta2, fruta3=fruta3, fruta4=fruta4)
+    frutas = ["Morango", "Uva", "Maçã", "Laranja"]
+    return render_template("index.html", frutas=frutas)
 
 @app.route('/sobre')
 def sobre():

@@ -1,13 +1,15 @@
 from flask import Flask, render_template, request
 import urllib.request, json
 from flask_sqlalchemy import SQLAlchemy
+import pymysql
 
 db = SQLAlchemy()
 
 app = Flask(__name__)
 
 # configure the SQLite database, relative to the app instance folder
-app.config["SQLALCHEMY_DATABASE_URI"] = "sqlite:///cursos.sqlite3"
+#app.config["SQLALCHEMY_DATABASE_URI"] = "sqlite:///cursos.sqlite3"
+app.config["SQLALCHEMY_DATABASE_URI"] = "mysql+pymysql://geek:university@localhost:3306/db_cursos"
 
 # initialize the app with the extension
 db.init_app(app)
@@ -65,6 +67,10 @@ def filmes(propriedade):
     jsondata = json.loads(dados)
 
     return render_template("filmes.html", filmes=jsondata['results'])
+
+@app.route('/cursos')
+def lista_cursos():
+    return render_template("cursos.html", cursos=Cursos.query.all())
 
 if __name__=="__main__":
     db.create_all()

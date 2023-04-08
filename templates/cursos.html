@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+{% block conteudo %}
+<h2 style="text-align: center;">Lista de Cursos</h2>
+<hr>
+<table class="table">
+    <thead>
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">Nome do Curso</th>
+        <th scope="col">Descrição do Curso</th>
+        <th scope="col">Carga Horária do Curso</th>
+      </tr>
+    </thead>
+    <tbody>
+        {% for curso in cursos %}
+      <tr>
+        <th scope="row">{{curso.id}}</th>
+        <td>{{curso.nome}}</td>
+        <td>{{curso.descricao}}</td>
+        <td>{{curso.ch}}</td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+
+{% endblock %}

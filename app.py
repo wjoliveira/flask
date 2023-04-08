@@ -32,6 +32,5 @@ def filmes():
     jsondata = json.loads(dados)
 
     return render_template("filmes.html", filmes=jsondata['results'])
-    #return jsondata['results']
 
 #http://127.0.0.1:5000 - endereço padrão

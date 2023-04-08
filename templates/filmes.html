@@ -1,0 +1,10 @@
+{% extends "base.html" %}
+{% block conteudo %}
+<h2 style="text-align: center;">Lista de Filmes</h2>
+<hr>
+<ul class="list-group"></ul>
+{% for filme in filmes %}
+<li class="list-group-item">{{filme.title}}</li>
+{% endfor%}
+</ul>
+{% endblock conteudo %}

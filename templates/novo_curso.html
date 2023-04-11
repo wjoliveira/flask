@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+{% block conteudo %}
+<h2 style="text-align: center;">Adicionar Novo Curso</h2>
+<hr>
+<form class="form-control" action="/criar_curso" method="post">
+    <div class="mb-3">
+        <label for="nome" class="form-label">Nome</label>
+        <input class="form-control" type="text" name="nome" id="nome_do_curso" placeholder="Nome do curso" required>
+    </div>
+    <div class="mb-3">
+        <label for="descricao" class="form-label">Descrição</label>
+        <input class="form-control" type="text" name="descricao" id="descricao_do_curso" placeholder="Descrição do curso" required>
+    </div>
+    <div class="mb-3">
+        <label for="ch" class="form-label">CH</label>
+        <input class="form-control" type="number" name="ch" id="ch_do_curso" placeholder="CH do curso" required>
+    </div>
+        <button class="btn btn-outline-success" type="submit">Adicionar Curso</button>
+</form>
+
+{% endblock %}

@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request, redirect, url_for
+from flask import Flask, render_template, request, redirect, flash
 import urllib.request, json
 from flask_sqlalchemy import SQLAlchemy
 import pymysql
@@ -6,6 +6,7 @@ import pymysql
 db = SQLAlchemy()
 
 app = Flask(__name__)
+app.secret_key = b'_5#y2L"F4Q8z\n\xec]/'
 
 # configure the SQLite database, relative to the app instance folder
 #app.config["SQLALCHEMY_DATABASE_URI"] = "sqlite:///cursos.sqlite3"
@@ -79,11 +80,13 @@ def criar_curso():
     ch = request.form.get("ch")
 
     if request.method == "POST":
-        curso = Cursos(nome, descricao, ch)
-        db.session.add(curso)
-        db.session.commit()
-        return redirect(url_for("lista_cursos"))
-
+        if not nome or not descricao or not ch:
+            flash("Preencha todos os campos do formulário!","error")
+        else:
+            curso = Cursos(nome, descricao, ch)
+            db.session.add(curso)
+            db.session.commit()
+            return redirect("/cursos")
     return render_template("novo_curso.html")
 
 if __name__=="__main__":

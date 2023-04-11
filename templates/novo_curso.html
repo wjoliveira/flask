@@ -2,6 +2,11 @@
 {% block conteudo %}
 <h2 style="text-align: center;">Adicionar Novo Curso</h2>
 <hr>
+{%- for mensagem in get_flashed_messages() %}
+    <div class="alert alert-danger">
+        {{mensagem}}
+    </div>
+{%- endfor %}
 <form class="form-control" action="/criar_curso" method="post">
     <div class="mb-3">
         <label for="nome" class="form-label">Nome</label>

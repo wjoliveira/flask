@@ -23,6 +23,7 @@
         <td>{{curso.ch}}</td>
         <td>
           <a href="/atualizar_curso/{{curso.id}}" class="btn btn-secondary btn-sm">Editar</a>
+          <a href="/excluir_curso/{{curso.id}}" onclick="return confirm('Deseja realmente excluir esse registro?')" class="btn btn-danger btn-sm">Excluir</a>
         </td>
       </tr>
       {% endfor %}

@@ -102,6 +102,11 @@ def atualizar_curso(id):
         return redirect("/cursos")
     return render_template("atualizar_curso.html", curso=curso)
     
+@app.route('/excluir_curso/<int:id>', methods=["GET"])
+def excluir_curso(id):
+    Cursos.query.filter_by(id=id).delete()
+    db.session.commit()
+    return redirect("/cursos")
 
 if __name__=="__main__":
     db.create_all()

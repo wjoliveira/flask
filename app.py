@@ -6,11 +6,12 @@ import pymysql
 db = SQLAlchemy()
 
 app = Flask(__name__)
-app.secret_key = b'_5#y2L"F4Q8z\n\xec]/'
+#app.secret_key = b'_5#y2L"F4Q8z\n\xec]/'
 
 # configure the SQLite database, relative to the app instance folder
 #app.config["SQLALCHEMY_DATABASE_URI"] = "sqlite:///cursos.sqlite3"
 app.config["SQLALCHEMY_DATABASE_URI"] = "mysql+pymysql://geek:university@localhost:3306/db_cursos"
+app.config["SECRET_KEY"] = "randon string"
 
 # initialize the app with the extension
 db.init_app(app)
@@ -71,7 +72,11 @@ def filmes(propriedade):
 
 @app.route('/cursos')
 def lista_cursos():
-    return render_template("cursos.html", cursos=Cursos.query.all())
+    page = request.args.get('page', 1, type=int)
+    per_page = 5
+    todos_cursos = Cursos.query.paginate(page=page, per_page=per_page)
+
+    return render_template("cursos.html", cursos=todos_cursos)
 
 @app.route('/criar_curso', methods=["GET", "POST"])
 def criar_curso():
